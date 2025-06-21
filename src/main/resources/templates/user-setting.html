@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" th:replace="~{user-base::layout(~{::section})}">
+
+
+<!-- by using of this abouve url(replace) we replace same sidebar and navbar  inside dashboard.html file and inside base we use fragment  -->
+<head>
+
+<meta charset="ISO-8859-1">
+<title>Dash-Board</title>
+</head>
+<body>
+
+
+<section>
+
+
+<div class="row mt-5">
+
+<div class="col-md-6 offset-md-3">
+
+<div class="card">
+
+<div class="card-body">
+
+<h5 style="text-align:center;">Change Password</h5>
+
+
+      
+      <div th:if="${failed}" class="alert alert-danger alert-dismissible fade show text-center mt-2"style="max-width: 600px; margin-top: 10px; font-weight: 500; border-radius: 8px;">
+    <span th:text="${failed}"></span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+      
+<hr>
+
+<form th:action="@{/update-user-password}" method="post" >
+
+<!-- 
+<div class="mt-3">
+<label for="password">Enter Old Password</label>
+<input type="text" name="password"  id="password"  class="form-control" required="required">
+</div>
+
+
+
+<div class="mt-3">
+<label for="newPassword">Enter New Password</label>
+<input type="password" name="newPassword" id="newPassword" class="form-control" minlength="6" required="required" >
+</div> 
+
+
+<div class="mt-3">
+<label for="re-enterPassword">Re-Enter new Password</label>
+<input type="password" name="re-enterPassword" id="re-enterPassword" class="form-control"  minlength="6"  required="required">
+</div>
+
+-->
+
+<!-- Old Password -->
+<div class="mt-3 position-relative">
+  <label for="password">Enter Old Password</label>
+  <input type="password" name="password" id="password" class="form-control" minlength="6" required="required">
+  <i class="fa-solid fa-eye position-absolute" id="toggleOldPassword" style="top: 40px; right: 15px; cursor: pointer;"></i>
+</div>
+
+<!-- New Password -->
+<div class="mt-3 position-relative">
+  <label for="newPassword">Enter New Password</label>
+  <input type="password" name="newPassword" id="newPassword" class="form-control" minlength="6" required="required">
+  <i class="fa-solid fa-eye position-absolute" id="toggleNewPassword" style="top: 40px; right: 15px; cursor: pointer;"></i>
+</div>
+
+<!-- Re-enter New Password -->
+<div class="mt-3 position-relative">
+  <label for="re-enterPassword">Re-Enter New Password</label>
+  <input type="password" name="re-enterPassword" id="re-enterPassword" class="form-control" minlength="6" required="required">
+  <i class="fa-solid fa-eye position-absolute" id="toggleRePassword" style="top: 40px; right: 15px; cursor: pointer;"></i>
+</div>
+
+
+
+
+
+
+
+<div class="container text-center">
+<div class="mt-3">
+<input type="submit" class="btn btn-primary" value="Update">
+</div>
+</div>
+
+</form>
+
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+</section>
+</body>
+</html>

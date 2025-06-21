@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+<!-- by using of this abouve url(replace) we replace same sidebar and navbar  inside dashboard.html file and inside dashboard we use replace  -->
+
+<head>
+<meta charset="ISO-8859-1">
+<title>HR Management Portal</title>
+
+
+<link rel="icon" href="https://cdn2.iconfinder.com/data/icons/flat-style-svg-icons-part-1/512/user_login_man-1024.png">
+
+
+<!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<link href="Css/style.css" rel="stylesheet">
+
+<!-- DataTables CSS and JS CDN -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    
+    <!-- DataTables Buttons extension for export functionality -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
+    
+    <!--  Before delete any record i want alert msg that why i added this script -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+</head>
+<body>
+
+<!-- Navbar Start -->
+
+ <nav class="navbar navbar-light fixed-top navbar-dark bg-danger" style="padding-top: 5px; padding-bottom: 5px; font-size: 0.9rem;">
+<div class="container-fluid">
+
+<a class="navbar-brand" th:href="@{/dash}">
+
+    <i class="fas fa-user-tie me-2"></i> HR Management Portal
+
+
+</a>
+
+
+
+<form class="d-flex ">
+
+<input type="search" class="form-control form-control-sm me-1 d-none d-md-block" style="width: 200px; height: 50px;" placeholder="&#128269;Search">
+
+
+<!-- <div class="btn-btn-group dropstart">
+
+   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+	
+
+
+<img alt="img" src="https://media.licdn.com/dms/image/v2/D5603AQEkQh3FuryzAQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1681135979645?e=1755129600&v=beta&t=nUKleb3-Oa_oJfQ4kmU4CNBzNa6wyntXIHtsH7A3u2I" class="ms-2" style="width :45px; height: 45px; border-radius:50%">
+
+
+ <ul class="dropdown-menu">
+		   <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i> &nbsp;&nbsp; <span th:text="${session.name}">Sonu Kumar Pandit</span></a></li> 
+			<li><a class="dropdown-item" href="#"><i class="fas fa-laptop-code"></i>&nbsp; <span th:text="${session.desg}">Software Engineer</span></a></li><hr>
+			<li><a class="dropdown-item" th:href="@{/login}"><i class="fas fa-sign-out-alt"></i>&nbsp; Log out</a></li>
+
+		  </ul> 
+		  
+	
+  
+</div> -->
+
+
+
+<div class="btn-group dropstart">
+  <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+<img alt="img" src="https://images.rawpixel.com/image_social_square/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAxL3JtNjA5LTNkc29saWQtcG8tMDI5XzEuanBn.jpg" class="ms-2	" style="width :40px; height: 40px; border-radius:50%">
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i> &nbsp;&nbsp; <span th:text="${session.name}">Pratik Satish Dhote</span></a></li>
+    <li><a class="dropdown-item" href="#"><i class="fas fa-laptop-code"></i> &nbsp; <span th:text="${session.desg}">Software Engineer</span></a></li>
+    
+    <hr>
+    <li><a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt"></i> Log out</a></li>
+  </ul>
+</div>
+
+
+
+</form>
+
+</div>
+
+
+</nav>
+<!-- Navbar End  -->
+
+
+<!-- Side Bar of  base -->
+
+<!-- Start -->
+<!--  And Link Css <link href="Css/style.css" rel="stylesheet">  style.css-->
+
+<!-- @charset "ISO-8859-1";
+
+.sidebar
+{
+	height: 100vh;
+	top:60px;
+    position: relative;
+    left: 0;
+    
+    z-index:100;
+    overflow-y: auto;
+}
+
+.sidebar a
+{
+	padding: 10px 15px;
+	text-decoration: none;
+	display:block;
+	color: #333;
+	font-weight: 600;
+}
+
+.sidebar a span
+{
+	padding-left:10px;
+	
+}
+.sidebar a:hover
+{
+	background-color: #ddd;
+} -->
+
+
+
+
+
+ <div class="container-fluid" style="position: fixed; top: 0; bottom: 0; height: 100vh;">
+        <div class="row">
+            <nav class="col-md-2 sidebar d-none d-md-block" style="margin-top: 30px;">
+              <a th:href="@{/dash}"><i class="fas fa-tachometer-alt"></i> <span>Dash Board</span></a>
+				<a th:href="@{/add-employee}"><i class="fas fa-user-plus"></i> <span>Add Employee</span></a>
+				<a th:href="@{/all-employee}"><i class="fas fa-users"></i> <span>All Employee</span></a>
+				<a th:href="@{/create-post}"><i class="fas fa-pencil-alt"></i> <span>Create Post</span></a>
+				<a th:href="@{/status}"><i class="fas fa-tasks"></i> <span>Status</span></a>
+				<a th:href="@{/my-profile}"><i class="fas fa-user"></i> <span>My Profile</span></a>
+				<a th:href="@{/setting}"><i class="fas fa-cog"></i> <span>Setting</span></a>
+
+            </nav> 
+
+            <main class="col-md-10" style="padding-top: 60px; background-color: #f2f3f4; height: 100vh; overflow-y: auto;">
+                 <!-- Content -->
+                 
+                  <div th:replace="${content}"></div>
+                 
+                
+                 
+                 <i style="float: right; font-size: 45px; position: fixed;  bottom: 10px; right: 25px; cursor: pointer;" class="fa-regular  d-none d-md-block" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                <img src="https://img.lovepik.com/png/20231008/dialog-pink-chat-message-red-circle-miss-dialog-border_126559_wh860.png" alt="" style="width: 75px; height: 75px"/>
+                </i>
+                
+                <i style="float: right; font-size: 45px; position: fixed;  bottom: 50px; right: 10px; cursor: pointer;" class="fa-regular  d-block d-md-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                <img src="https://img.lovepik.com/png/20231008/dialog-pink-chat-message-red-circle-miss-dialog-border_126559_wh860.png" alt="" style="width: 75px; height: 75px"/>
+                </i>
+            
+             
+           <!--   Chat Box -->
+                        
+    
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header" style="padding-top: 100px;">
+        <h5 id="offcanvasRightLabel">Chat</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <div class="offcanvas-body d-flex flex-column">
+        <!-- Chat messages -->
+        <div class="chat-container flex-grow-1 mb-3" style="overflow-y: auto; max-height: 400px;">
+            <!-- Received -->
+            <div class="received-message mb-2">
+                <p class="message bg-light p-2 rounded" style="max-width: 75%;">Hello, how are you?</p>
+                <small class="text-muted">10:15 AM</small>
+            </div>
+
+            <!-- Sent -->
+            <div class="sent-message text-end mb-2">
+                <p class="message bg-primary text-white p-2 rounded d-inline-block" style="max-width: 75%;">
+                    Nice! Let me know if you need any help.
+                </p>
+                <br />
+                <small class="text-muted">10:18 AM</small>
+            </div>
+
+            <!-- Received -->
+            <div class="received-message mb-2">
+                <p class="message bg-light p-2 rounded" style="max-width: 75%;">I was trying to submit my report, but I'm facing some issues.</p>
+                <small class="text-muted">10:20 AM</small>
+            </div>
+
+            <!-- Sent -->
+            <div class="sent-message text-end mb-2">
+                <p class="message bg-primary text-white p-2 rounded d-inline-block" style="max-width: 75%;">
+                    What kind of issue are you facing? Is there any error message?
+                </p>
+                <br />
+                <small class="text-muted">10:21 AM</small>
+            </div>
+
+            <!-- Received -->
+            <div class="received-message mb-2">
+                <p class="message bg-light p-2 rounded" style="max-width: 75%;">Yes, it's saying "Upload Failed. Try Again Later".</p>
+                <small class="text-muted">10:22 AM</small>
+            </div>
+
+            <!-- Sent -->
+            <div class="sent-message text-end mb-2">
+                <p class="message bg-primary text-white p-2 rounded d-inline-block" style="max-width: 75%;">
+                    Got it. I’ll look into it right away and get back to you.
+                </p>
+                <br />
+                <small class="text-muted">10:23 AM</small>
+            </div>
+        </div>
+
+        <!-- Input box -->
+        <div class="chat-input">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Type a message..." aria-label="Message">
+                <button class="btn btn-primary" type="button">Send</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+ 
+            
+            
+            </main>
+        </div>
+    </div>
+
+
+<!-- end -->
+
+<!-- Mobile view icons  -->
+ <nav class="navbar navbar-light fixed-bottom d-block d-md-none" style="background-color: #e3f2fd;">
+ <div class="d-flex justify-content-around w-100">
+              <a th:href="@{/dash}"class="flex-fill text-center"><i class="fas- fa-tachometer-alt"></i> </a>
+				<a th:href="@{/add-employee}"class="flex-fill text-center"><i class="fas fa-user-plus"></i> </a>
+				<a th:href="@{/all-employee}"class="flex-fill text-center"><i class="fas fa-users"></i> </a>
+				<a th:href="@{/create-post}"class="flex-fill text-center"><i class="fas fa-pencil-alt"></i> </a>
+				<a th:href="@{/status}"class="flex-fill text-center"><i  class="fas fa-tasks"></i> </a>
+				<a th:href="@{/my-profile}"class="flex-fill text-center"><i class="fas fa-user"></i> </a>
+				<a th:href="@{/setting}"class="flex-fill text-center"><i class="fas fa-cog	"></i> </a>
+
+</div>
+</nav> 
+
+
+
+</body>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+ -->
+ <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="Js/emp.js"></script>
+
+
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+    
+    <script>
+    $(document).ready(function() {
+        $('#example').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'excelHtml5',
+                'pdfHtml5'
+            ]
+        });
+    });
+    
+   
+
+</script>
+
+
+
+</html>

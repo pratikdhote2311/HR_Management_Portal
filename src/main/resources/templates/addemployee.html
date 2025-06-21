@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<!-- by using of this abouve url(replace) we replace same sidebar and navbar  inside addemployee.html file and inside base.html we use fragment  -->
+
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<section>
+
+<div class="row">
+
+<div class="col-md-10 offset-md-1">
+
+
+<div class="card mt-3">
+
+<div class="card-body">
+
+<h4 style="text-align: center;">Employee Registration Form </h4>
+
+<hr>
+
+<form th:action="@{/save-employee}" method="post" th:object="${employee}">
+
+<div class="row">
+
+<div class="col-md-3 mt-2">
+<label for="employeeName" class="form-label">Employee Name </label>
+</div>
+<div class="col-md-7 mt-2">
+
+<!-- Using of this inside form error messages printed  -->
+<input type="text" class="form-control" name="employeeName" th:field="*{employeeName}" id="employeeName" >
+<p th:if="${#fields.hasErrors('employeeName')}" th:errors="*{employeeName}" class="text-danger"></p> 
+
+
+
+
+</div>
+
+
+
+<div class="col-md-3 mt-2">
+<label for="email" class="form-label"> Email </label>
+</div>
+<div class="col-md-7 mt-2">
+<input type="text" class="form-control" th:field="*{email}" name="email" id="email" >
+<!-- Error messages came  -->
+<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></p> 
+
+</div>
+
+
+<div class="col-md-3 mt-2">
+<label for="gender" class="form-label"> Gender </label>
+</div>
+<div class="col-md-7 mt-2">
+<input type="radio" class="form-check-input" th:field="*{gender}" name="gender" id="gender" value="M"> Male
+
+<input type="radio" class="form-check-input ms-4" th:field="*{gender}" name="gender" id="gender" value="F"> Female
+
+<p th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="text-danger"></p> 
+
+
+
+</div>
+
+
+<div class="col-md-3 mt-2">
+<label for="dateOfBirth" class="form-label"> Date of Birth </label>
+</div>
+<div class="col-md-7 mt-2">
+<input type="date" class="form-control" th:field="*{dateOfBirth}" name="dateOfBirth" id="dateOfBirth" >
+
+<p th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}" class="text-danger"></p> 
+
+</div>
+
+
+ <div class="col-md-3 mt-2">
+<label for="dateofJoin" class="form-label"> Date of Joining </label>
+</div>
+<div class="col-md-7 mt-2">
+<input type="date" class="form-control" th:field="*{dateofJoin}" name="dateofJoin" id="dateofJoin" >
+
+<p th:if="${#fields.hasErrors('dateofJoin')}" th:errors="*{dateofJoin}" class="text-danger"></p> 
+
+</div>
+
+
+
+<div class="col-md-3 mt-2">
+<label for="mobileNumber" class="form-label"> Mobile Number </label>
+</div>
+<div class="col-md-7 mt-2">
+<input type="number" class="form-control" th:field="*{mobileNumber}" name="mobileNumber" id="mobileNumber"  maxlength="10">
+
+<p th:if="${#fields.hasErrors('mobileNumber')}" th:errors="*{mobileNumber}" class="text-danger"></p> 
+
+</div>
+
+
+
+<div class="col-md-3 mt-2">
+<label for="aadhaarNumber" class="form-label"> Aadhaar Number </label>
+</div>
+<div class="col-md-7 mt-2">
+<input type="number" class="form-control" th:field="*{aadhaarNumber}" name="aadhaarNumber" id="aadhaarNumber" >
+
+<p th:if="${#fields.hasErrors('aadhaarNumber')}" th:errors="*{aadhaarNumber}" class="text-danger"></p> 
+
+</div>
+
+
+<div class="col-md-3 mt-2">
+<label for="accountNumber" class="form-label"> Account Number </label>
+</div>
+<div class="col-md-7 mt-2">
+<input type="number" class="form-control" th:field="*{accountNumber}" name="accountNumber" id="accountNumber" >
+
+<p th:if="${#fields.hasErrors('accountNumber')}" th:errors="*{accountNumber}" class="text-danger"></p> 
+
+</div>
+
+
+
+<div class="col-md-3 mt-2">
+<label for="department" class="form-label"> Department </label>
+</div>
+<div class="col-md-7 mt-2">
+
+<select class="form-select" id="department"  name="department" onchange ="updateDesignations()">
+
+
+
+
+<option selected="selected">Select Department</option>
+<option value="Development">Development</option>
+<option value="QA Testing">QA & Automation Testing</option>
+<option value="Networking">Networking</option>
+<option value="HR Team">HR Team</option>
+<option value="Security">Security</option>
+<option value="Sales Marketing">Sales & Marketing</option>
+
+
+
+
+
+</select>
+
+
+</div>
+
+
+
+<div class="col-md-3 mt-2">
+<label for="designation" class="form-label"> Designation </label>
+</div>
+<div class="col-md-7 mt-2">
+
+<select  class="form-select" id="designation" name="designation">
+<option selected="selected">Select Designation</option>
+</select>
+</div>
+
+
+<div class="col-md-3 mt-2">
+<label for="previousCompanyName" class="form-label"> Previous Company Name  </label>
+</div>
+<div class="col-md-7 mt-2">
+<input type="text" class="form-control" th:field="*{previousCompanyName}" name="previousCompanyName" id="previousCompanyName" >
+
+<p th:if="${#fields.hasErrors('previousCompanyName')}" th:errors="*{previousCompanyName}" class="text-danger"></p> 
+
+</div>
+
+
+
+<div class="col-md-3 mt-2">
+<label for="pfNumber" class="form-label"> PF Number </label>
+</div>
+<div class="col-md-7 mt-2">
+<input type="text" class="form-control" th:field="*{pfNumber}" name="pfNumber" id="pfNumber" >
+
+<p th:if="${#fields.hasErrors('pfNumber')}" th:errors="*{pfNumber}" class="text-danger"></p> 
+
+</div>
+
+
+<div class="col-md-3 mt-2">
+<label for="salary" class="form-label"> Salary </label>
+</div>
+<div class="col-md-7 mt-2">
+<input type="number" class="form-control"  name="salary" id="salary" >
+
+
+</div>
+
+<div class="col-md-3 mt-2">
+    <label for="currentAddress" class="form-label">Current Address</label>
+</div>
+<div class="col-md-7 mt-2">
+    <textarea class="form-control" th:field="*{currentAddress}" name="currentAddress" id="currentAddress" rows="3"   maxlength="1000" minlength="10"></textarea>
+    
+    <p th:if="${#fields.hasErrors('currentAddress')}" th:errors="*{currentAddress}" class="text-danger"></p> 
+    
+</div>
+
+
+
+<div class="col-md-3 mt-2">
+    <label for="permanentAddress" class="form-label">Permanent Address</label>
+</div>
+<div class="col-md-7 mt-2">
+    <textarea class="form-control" th:field="*{permanentAddress}" name="permanentAddress" id="permanentAddress" rows="3"  maxlength="1000" minlength="10"></textarea>
+    
+    <p th:if="${#fields.hasErrors('permanentAddress')}" th:errors="*{permanentAddress}" class="text-danger"></p> 
+    
+</div>
+
+
+
+
+
+<div class="col-md-3 mt-2">
+    <label for="role" class="form-label">Role</label>
+</div>
+<div class="col-md-7 mt-2">
+
+<select class="form-select" name="role" id="role">
+
+<option value="SELECT">Select</option>
+<option value="USER">User</option>
+<option value="ADMIN">Admin</option>
+
+
+
+
+</select>
+</div>
+
+
+
+<div class="col-md-3 mt-2">
+<label class="form-check-label" for="active">Active</label>
+</div>
+
+<div class="col-md-7 mt-2 form-check form-switch form-switch">
+
+<input style="font-size:25px" class="form-check-input ms-1" type="checkbox" name="active" id="active" checked>
+
+
+</div>
+
+
+
+
+<div class="container text-center mt-4	">
+<input type="submit" value="Submit" class="btn btn-primary">
+
+</div>
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+</section>
+</body>
+</html>

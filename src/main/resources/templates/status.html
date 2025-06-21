@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<section>
+
+ <div class="container mt-5">
+ 
+ 
+ <table id="example" class="display nowrap" style="width: 100%">
+ 
+ <thead>
+ <tr>
+ 
+ <th>Sr_No</th>
+ <th>Name</th>
+ <th>Position</th>
+ <th>Subject</th>
+  <th>Description</th>
+ 
+  <th>Date</th>
+ 
+  <th>For Approve</th>
+ 
+ </tr>
+ </thead>
+ 
+ 
+ <tbody>
+ 
+ <tr th:each="compose: ${allUserComposeDetails}">
+ 
+ <td th:text="${compose.id}"></td>
+  <td th:text="${compose.empName}">Miralwar</td>
+ 
+  <td th:text="${compose.position}">Senior Developer</td>
+  
+  <td th:text="${compose.subject}">Increase Salary</td>
+ 
+  <td th:text="${compose.text}">I want leave because i am feeling well so i will go to hospital .</td>
+ 
+  <td th:text="${compose.addedDate}">2025-06-16</td>
+ 
+  <td style="cursor:pointer">&nbsp;&nbsp;
+  
+<!--    <i th:onclick="|approved(${compose.id,'APPROVE'})|"style="color:green" class="fas fa-check-circle" title="Approved"></i> &nbsp;
+ -->   
+ 
+ <span th:if="${compose.status == 'PENDING' }">
+   <i th:onclick="'approved(' + ${compose.id} + ', \'APPROVE\')'" 
+   style="color:green" class="fas fa-check-circle" title="Approved"></i>&nbsp;
+   
+   
+   <i th:onclick="'approved(' + ${compose.id} + ', \'DENIED\')'" style="color:red" class="fas fa-times-circle" title="Reject"></i>&nbsp;
+<i th:onclick="'approved(' + ${compose.id} + ', \'CANCELLED\')'" style="color:#f1c40f" class="fas fa-ban" title="Cancelled"></i>&nbsp;
+   
+   
+   
+   <!--  <i style="color:red" class="fas fa-times-circle" title="Denied"></i>  &nbsp;
+    <i style="color:#f1c40f" class="fas fa-ban" title="Pending"></i>
+    -->
+    
+    </span>
+    
+     <span th:unless="${compose.status == 'PENDING' }">
+     
+     <class style="color:red">
+     <i th:text="${compose.status}"></i>
+     </class>
+     </span>
+  
+  </td>
+ 
+ 
+ </tr>
+ 
+ 
+ </tbody>
+ 
+ </table>
+ </div>
+
+</section>
+
+</body>
+</html>

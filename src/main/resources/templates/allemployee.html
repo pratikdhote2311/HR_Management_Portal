@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<section>
+
+<h4 style="text-align: center;"class="mt-3">All Employee Details </h4>
+
+  
+
+<hr>
+<div class="container-fluid mt-5 table-responsive" >
+
+
+<table id="example" class="display nowrap" style="width:100%">
+    <thead>
+        <tr>
+            <th>Emp ID</th>
+            <th>Employee Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Date of Birth</th>
+            <th>Date of Join</th>
+            <th>Mobile Number</th>
+            <th>Aadhaar Number</th>
+            <th>Account Number</th>
+            <th>Department</th>
+            <th>Designation</th>
+            <th>Previous Company Name</th>
+            <th>PF Number</th>
+            <th>Salary</th>
+            <th>Current Address</th>
+            <th>Permanent Address</th>
+            <th>Active</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Sample row (you can duplicate this row and change values) -->
+        <tr th:each="emp: ${allEmpDetails}">
+            <td th:text="'HMP'+${emp.id}">1</td>    <!--  <td th:text="${emp.id}">1</td>  -->
+            <td th:text="${emp.employeeName}">Pratik Dhote</td>
+            <td th:text="${emp.email}">pratik@example.com</td>
+            <td th:text="${emp.gender}">Male</td>
+            <td th:text="${emp.dateOfBirth}">1998-01-01</td>
+            <td th:text="${emp.dateofJoin}">2023-08-10</td>
+            <td th:text="${emp.mobileNumber}">9876543210</td>
+            <td th:text="${emp.aadhaarNumber}">1234-5678-9012</td>
+            <td th:text="${emp.accountNumber}">012345678901</td>
+            <td th:text="${emp.department}">IT</td>
+            <th th:text="${emp.designation}">Java Developer</th>
+            <td th:text="${emp.previousCompanyName}">Altius</td>
+            <td th:text="${emp.pfNumber}">PF123456</td>
+            <td th:text="${emp.salary}">50000</td>
+            <td th:text="${emp.currentAddress}">Wani, Maharashtra</td>
+            <td th:text="${emp.permanentAddress}">Nagpur, Maharashtra</td>
+            <td th:text="${emp.active}">Yes</td>
+            <td>
+            
+     
+            
+            
+            <!--  Edit and Update Options  -->
+          
+            <a th:onclick="|editRecord(${emp.id})|" style="color: blue;cursor:pointer;" class="fa-solid fa-pen-to-square ms-2"></a>
+            <a th:onclick="|deleteRecord(${emp.id})|"   style="color: red; cursor: pointer;" class="fas fa-trash ms-2"></a>
+            
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+</div>
+
+</section>
+
+</body>
+</html>

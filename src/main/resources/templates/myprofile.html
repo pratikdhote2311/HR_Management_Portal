@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<section>
+
+
+<div class="row">
+
+<div class="col-md-6 offset-md-3 mt-5">
+
+     <div class="card">
+     
+     <div class="card-body">
+     
+     <div class="container text-center">
+    <img alt="img" src="https://images.rawpixel.com/image_social_square/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAxL3JtNjA5LTNkc29saWQtcG8tMDI5XzEuanBn.jpg" class="ms-2	"style="height: 100px">
+     
+     
+     <h5 th:text="${emp.employeeName}"></h5>
+     
+      <p><i th:text="${emp.designation}"></i></p>
+     
+   
+   <hr>
+     </div>
+     
+     <table class="table">
+
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td><b>Email</b></td>
+      <td th:text="${emp.email}">Otto</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td><b>Gender</b></td>
+      <td th:text="${emp.gender}">Thornton</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td><b>Date of Birth</b></td>
+      <td th:text="${emp.dateOfBirth}">Thornton</td>
+    </tr>
+    
+     <tr>
+      <th scope="row">4</th>
+      <td><b>Mobile Number</b></td>
+      <td th:text="${emp.mobileNumber}">Otto</td>
+    </tr>
+    
+    
+     <tr>
+      <th scope="row">5</th>
+      <td><b>Department</b></td>
+      <td th:text="${emp.department}">Otto</td>
+    </tr>
+    
+    
+     <tr>
+      <th scope="row">6</th>
+      <td><b>Current Address</b></td>
+      <td th:text="${emp.currentAddress}">Otto</td>
+    </tr>
+    
+    <tr>
+      <th scope="row">7</th>
+      <td><b>Permanent Address</b></td>
+      <td th:text="${emp.permanentAddress}">Otto</td>
+    </tr>
+  </tbody>
+</table>
+     
+     
+     </div>
+     
+     </div>
+
+</div>
+
+</div>
+
+
+</section>
+
+</body>
+</html>

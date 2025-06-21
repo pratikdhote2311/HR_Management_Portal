@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" th:replace="~{user-base::layout(~{::section})}">
+
+
+<!-- by using of this abouve url(replace) we replace same sidebar and navbar  inside dashboard.html file and inside base we use fragment  -->
+<head>
+
+<meta charset="ISO-8859-1">
+<title>Dash-Board</title>
+</head>
+<body>
+
+<section>
+
+
+<div class="row">
+    <div th:each="entry : ${designationCounts}" class="col-6 col-sm-2 mt-4">
+        <div class="card text-center shadow" style="cursor: pointer;">
+            <div class="card-body">
+                <b th:text="${entry.key + ' [' + entry.value + ']'}">Developement...</b>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="row">
+            <div th:each="entry : ${statusCounts}" class="col-6 col-sm-2 mt-4">
+                <div class="card text-center shadow-sm" style="cursor: pointer;">
+                    <div class="card-body">
+                        <b th:text="${entry.key + ' [' + entry.value + ']'}">Loading...</b>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        
+        
+        
+        
+        
+        
+        
+         <div class="row">
+        <div th:each="entry, iterStat : ${statusCounts}" class="col-6 col-sm-2 mt-4">
+            <div th:class="'card text-center shadow-sm bg-' + 
+                          (${iterStat.index % 6 == 0 ? 'danger' :
+                            iterStat.index % 6 == 1 ? 'success' :
+                            iterStat.index % 6 == 2 ? 'warning' :
+                            iterStat.index % 6 == 3 ? 'danger' : 
+                            iterStat.index % 6 == 4 ? 'success' : 'secondary'}) + ' text-white'">
+                <div class="card-body">
+                    <b th:text="${entry.key + ' [' + entry.value + ']'}">Loading...</b>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+
+	
+	<!-- <div class="row" >
+	
+	
+	
+	<div class="col-6 col-sm-2 mt-4">
+	
+	<div class="card" style="cursor: pointer;">
+	
+	<div class="card-body">
+	
+	<b>Development [9]</b>
+	
+	</div>
+	</div>
+	</div>
+	
+	
+	<div class="col-6 col-sm-2 mt-4">
+	
+	<div class="card" style="cursor: pointer;">
+	
+	<div class="card-body">
+	
+	<b>QA Testing [5]</b>
+	
+	</div>
+	</div>
+	</div>
+	
+	
+	<div class="col-6 col-sm-2 mt-4">
+	
+	<div class="card" style="cursor: pointer;">
+	
+	<div class="card-body">
+	
+	<b>Networking [6]</b>
+	
+	</div>
+	</div>
+	</div>
+	
+	
+	<div class="col-6 col-sm-2 mt-4">
+	
+	<div class="card" style="cursor: pointer;">
+	
+	<div class="card-body">
+	
+	<b>HR Team [10]</b>
+	
+	</div>
+	</div>
+	</div>
+	
+	
+	<div class="col-6 col-sm-2 mt-4">
+	
+	<div class="card" style="cursor: pointer;">
+	
+	<div class="card-body">
+	
+	<b>Security [4]</b>
+	
+	</div>
+	</div>
+	</div>
+	
+	
+	<div class="col-6 col-sm-2 mt-4">
+	
+	<div class="card" style="cursor: pointer;">
+	
+	<div class="card-body">
+	
+	<b>Sales Marketing [2]</b>
+	
+	</div>
+	</div>
+	</div>
+	
+	
+	</div>
+	
+	
+	
+	
+	 -->
+	
+<!-- 	<div class="row">
+	
+	
+	
+	<div class="col-6 col-sm-2 mt-4">
+	
+	<div class="card" style="cursor: pointer;">
+	
+	<div class="card-body bg-warning">
+	
+	<b> Pending [5]</b>
+	
+	</div>
+	</div>
+	</div>
+	
+	
+	<div class="col-6 col-sm-2 mt-4">
+	
+	<div class="card" style="cursor: pointer;">
+	
+	<div class="card-body bg-success">
+	
+	
+	<b style="color:white;">Approved [5]</b>
+	
+	</div>
+	</div>
+	</div>
+	
+	
+	<div class="col-6 col-sm-2 mt-4">
+	
+	<div class="card" style="cursor: pointer;">
+	
+	<div class="card-body bg-info">
+	
+	<b style="color:white;">Cancelled [6]</b>
+	
+	</div>
+	</div>
+	</div>
+	
+	
+	<div class="col-6 col-sm-2 mt-4">
+	
+	<div class="card" style="cursor: pointer;">
+	
+	<div class="card-body bg-danger">
+	
+	<b style="color:white;">Denied [10]</b>
+	
+	</div>
+	</div>
+	</div>
+	
+	
+	<div class="col-6 col-sm-2 mt-4">
+	
+	<div class="card" style="cursor: pointer;">
+	
+	<div class="card-body bg-success">
+	
+	<b style="color:white;">All [4]</b>
+	
+	</div>
+	</div>
+	</div>
+	
+	
+	<div class="col-6 col-sm-2 mt-4">
+	
+	<div class="card" style="cursor: pointer;">
+	
+	<div class="card-body bg-secondary">
+	
+	<b style="color:white;">Reminder  [2]</b>
+	
+	</div>
+	</div>
+	</div>
+	
+	
+	</div> -->
+	
+	
+	
+<!--  Recent Acitivity  -->
+<hr>
+
+
+<div class="row mb-5 mt-3">
+
+
+<div class="col-md-8 mt-4">
+
+<div class="card">
+
+<div class="card-body">
+
+<h5>Recent Activity</h5>
+
+<hr>
+
+
+ <table class="table"style="width: 100%">
+ 
+ <thead>
+ <tr>
+ 
+ <th>Sr_No</th>
+
+ <th>Subject</th>
+  <th>Description</th>
+ 
+  <th>Date</th>
+ 
+  <th>For Approve</th>
+ 
+ </tr>
+ </thead>
+ 
+ 
+ <tbody>
+ 
+ <tr th:each="compose,i: ${allUserComposeDetails}">
+ 
+ <td th:text="${i.index+1}"></td>
+  
+  <td th:text="${compose.subject}">Increase Salary</td>
+ 
+  <td th:text="${compose.text}">I want leave because i am feeling well so i will go to hospital .</td>
+ 
+  <td th:text="${compose.addedDate}">2025-06-16</td>
+ 
+  <td style="cursor:pointer">&nbsp;&nbsp;
+  
+<!--     <i th:onclick="|approved(${compose.id,'APPROVE'})|"style="color:green" class="fas fa-check-circle" title="Approved"></i> &nbsp;
+ -->   
+ 
+ 
+    
+    
+     
+     <class style="color:red">
+     <i th:text="${compose.status}"></i>
+     </class>
+  
+  </td>
+ 
+ 
+ </tr>
+ 
+ 
+ </tbody>
+ 
+ </table> 
+
+
+
+</div>
+</div>
+
+</div>
+
+<div class="col-md-4 mt-4">
+
+<div class="card">
+
+
+<div class="card-body">
+
+<h5>Up Coming Birthdays !!!</h5>
+
+<hr>
+
+<div th:each="a : ${details}" class="d-flex align-items-center gap-3 mt-2" style="font-size: 14px;">
+
+    <!-- Profile Image -->
+    <img alt="img" 
+         src="https://images.rawpixel.com/image_social_square/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAxL3JtNjA5LTNkc29saWQtcG8tMDI5XzEuanBn.jpg" 
+         style="height: 35px; width: 35px; border-radius: 50%; object-fit: cover;">
+
+    <!-- Employee ID -->
+    <span th:text="'HMP' + ${a.id}" class="fw-bold">HMP101</span>
+
+    <!-- Name -->
+    <span th:text="${a.employeeName}">Pratik Dhote</span>
+
+    <!-- Cake Icon -->
+
+ <i class="fa-solid fa-cake-candles me-1" style="color:red;"></i>    
+
+    <!-- Date of Birth -->
+    <span th:text="${a.dateOfBirth}">23-11-2025</span>
+
+</div>
+
+
+
+</div>
+</div>
+
+
+
+</div>
+
+</div>
+
+
+
+</section>
+
+</body>
+</html>
